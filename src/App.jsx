@@ -44,54 +44,57 @@ export default function App() {
   const currentState = talking ? 'Talking' : listening ? 'Listening' : 'Idle'
 
   return (
-    <div className="layout-wrap">
-      <div className="bg-glow">
-        <div className="glow-blue" />
-        <div className="glow-pink" />
-        <div className="glow-yellow" />
-        <div className="glow-teal" />
-      </div>
-      <div className="layout">
-        <div className="stage">
-          <div className="canvas-wrap">
-            <RiveComponent />
+    <>
+      <div className="layout-wrap">
+        <div className="bg-glow">
+          <div className="glow-blue" />
+          <div className="glow-pink" />
+          <div className="glow-yellow" />
+          <div className="glow-teal" />
+        </div>
+        <div className="layout">
+          <div className="stage">
+            <div className="canvas-wrap">
+              <RiveComponent />
+            </div>
+          </div>
+
+          <div className="panel">
+            <div className="top-tag">
+              <span className="pulse" />
+              Live State Machine
+            </div>
+            <h1>Wizard Controller</h1>
+            <p className="sub">
+              Use the toggles and buttons to test the state machine behavior live.
+            </p>
+            <div className="group-label">Loop states</div>
+            <div className="card">
+              <Row label="Talking" hint="isTalking" checked={talking} onChange={toggleTalking} />
+              <Row label="Listening" hint="isListening" checked={listening} onChange={toggleListening} />
+            </div>
+
+            <div className="group-label">One-shot triggers</div>
+            <div style={{ marginBottom: 26 }}>
+              <button className="btn blink" onClick={() => blink && blink.fire()}>
+                <span className="dot" />
+                Blink
+              </button>
+              <button className="btn gem" onClick={() => gemGlint && gemGlint.fire()}>
+                <span className="dot" />
+                Gem Glint
+              </button>
+            </div>
+
+            <div className="state-readout">
+              <span className="live-dot" />
+              Current state: <b>{currentState}</b>
+            </div>
           </div>
         </div>
-
-        <div className="panel">
-          <div className="top-tag">
-            <span className="pulse" />
-            Live State Machine
-          </div>
-          <h1>Wizard Controller</h1>
-          <p className="sub">
-            Use the toggles and buttons to test the state machine behavior live.
-          </p>
-          <div className="group-label">Loop states</div>
-          <div className="card">
-            <Row label="Talking" hint="isTalking" checked={talking} onChange={toggleTalking} />
-            <Row label="Listening" hint="isListening" checked={listening} onChange={toggleListening} />
-          </div>
-
-          <div className="group-label">One-shot triggers</div>
-          <div style={{ marginBottom: 26 }}>
-            <button className="btn blink" onClick={() => blink && blink.fire()}>
-              <span className="dot" />
-              Blink
-            </button>
-            <button className="btn gem" onClick={() => gemGlint && gemGlint.fire()}>
-              <span className="dot" />
-              Gem Glint
-            </button>
-          </div>
-
-          <div className="state-readout">
-            <span className="live-dot" />
-            Current state: <b>{currentState}</b>
-          </div>
-        </div>
       </div>
-    </div>
+      <Analytics />
+    </>
   )
 }
 
