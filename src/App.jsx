@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRive, useStateMachineInput, Layout, Fit, Alignment } from '@rive-app/react-webgl2'
 import wizardRiv from './assets/wizard.riv'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const STATE_MACHINE = 'Wizard Controller'
 
