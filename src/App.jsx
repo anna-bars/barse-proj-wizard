@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { useRive, useStateMachineInput, Layout, Fit, Alignment } from '@rive-app/react-webgl2'
-import wizzardRiv from './assets/wizzard.riv'
+import wizardRiv from './assets/wizard.riv'
 
-const STATE_MACHINE = 'Wizzard Controller'
+const STATE_MACHINE = 'Wizard Controller'
 
 export default function App() {
   const [talking, setTalking] = useState(false)
   const [listening, setListening] = useState(false)
 
   const { rive, RiveComponent } = useRive({
-    src: wizzardRiv,
+    src: wizardRiv,
     stateMachines: STATE_MACHINE,
     autoplay: true,
     layout: new Layout({ fit: Fit.Contain, alignment: Alignment.Center }),
